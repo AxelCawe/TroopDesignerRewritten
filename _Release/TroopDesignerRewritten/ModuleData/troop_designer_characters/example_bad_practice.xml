@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+	<NPCCharacter
+		id="td_bad_t2_skirmisher"
+		default_group="Ranged"
+		level="11"
+		name="{=}Confused Skirmisher"
+		occupation="Soldier"
+		culture="Culture.empire"
+		skill_template="SkillSet.t2_ranged" >
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<!--
+			Randomization:
+			- the randomization will be done on each equipment roster element, this is not an equipment roster pick
+			- this make it difficult to have a unit having different ranged weapon options (cause the weapons and quivers will be randomly distributed, which mean a unit can end up with a bow + bolts or crossbow + arrows)
+			- try having specialized unit to prevent such issues
+			
+			For example, this particular unit could end up with:
+			- Bow and arrows
+			- Crossbow and bolts
+			- Bow and bolts
+			- Crossbow and arrows
+			
+			That's a bit unhandy !
+		-->
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.hunting_bow" />
+				<equipment slot="Item1" id="Item.default_arrows" />
+				<equipment slot="Item2" id="Item.seax" />
+				<equipment slot="Head" id="Item.padded_cap" />
+				<equipment slot="Body" id="Item.tunic_with_rolled_cloth" />
+				<equipment slot="Gloves" id="Item.buttoned_leather_bracers" />
+				<equipment slot="Leg" id="Item.sturgia_boots_a" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.crossbow_a" />
+				<equipment slot="Item1" id="Item.bolt_a" />
+				<equipment slot="Item2" id="Item.seax" />
+				<equipment slot="Head" id="Item.arming_coif" />
+				<equipment slot="Body" id="Item.tunic_with_rolled_cloth" />
+				<equipment slot="Gloves" id="Item.buttoned_leather_bracers" />
+				<equipment slot="Leg" id="Item.sturgia_boots_a" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+</NPCCharacters>

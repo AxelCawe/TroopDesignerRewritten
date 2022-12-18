@@ -1,0 +1,21 @@
+<Prefab>
+  <Parameters>
+    <Parameter Name="TextFieldTitle" DefaultValue="" />
+    <Parameter Name="TextFieldInput" DefaultValue="" />
+  </Parameters>
+  <Window>
+    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" StackLayout.LayoutMethod="HorizontalLeftToRight">
+      <Children>
+
+        <RichTextWidget DoNotAcceptEvents="true" WidthSizePolicy="Fixed" SuggestedWidth="140" HeightSizePolicy="Fixed" SuggestedHeight="55" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Crafting.Popup.Property.Name.Text" Text="*TextFieldTitle" />
+                              
+        <BrushWidget DoNotAcceptEvents="true" WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="55" Brush="SPOptions.Dropdown.Center">
+          <Children>
+            <EditableTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Brush="Crafting.NameInput.Text" Text="*TextFieldInput" />
+          </Children>
+        </BrushWidget>
+
+      </Children>
+    </ListPanel>
+  </Window>
+</Prefab>

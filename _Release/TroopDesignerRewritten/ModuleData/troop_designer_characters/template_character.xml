@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+	<!--
+		Below is the character used in the Troop Designer screen
+		Do not change its id
+		
+		The editable default values are:
+		- default_group
+		- level
+		- is_basic_troop
+		- is_female
+		- is_hero
+		- upgrade_requires
+		- occupation
+		- culture
+		- face_key_template
+	-->
+	<NPCCharacter
+		id="troop_designer_character"
+		default_group="Infantry"
+		level="6"
+		name="{=}Character"
+		occupation="Soldier"
+		culture="Culture.empire">
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<skills>
+			<skill id="Athletics" value="250" />
+			<skill id="Riding" value="250" />
+			<skill id="OneHanded" value="250" />
+			<skill id="TwoHanded" value="250" />
+			<skill id="Polearm" value="250" />
+			<skill id="Bow" value="250" />
+			<skill id="Crossbow" value="250" />
+			<skill id="Throwing" value="250" />
+		</skills>
+    <Equipments>
+      <EquipmentRoster>
+		<equipment slot="Body" id="Item.tunic_with_rolled_cloth" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+</NPCCharacters>

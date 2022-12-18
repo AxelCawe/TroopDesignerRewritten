@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+	<Name value="Troop Designer Rewritten"/>
+	<Id value="TroopDesignerRewritten"/>
+	<Version value="v1.0.0"/>
+	<DefaultModule value="false"/>
+	<SingleplayerModule value="true"/>
+	<Official value="false"/>
+	<DependedModules>
+	   <DependedModule Id="Native"/>
+         <DependedModule Id="SandBoxCore"/>
+         <DependedModule Id="Sandbox"/>
+	</DependedModules>
+	<SubModules>
+		<SubModule>
+			<Name value="TroopDesignerRewritten" />
+			<DLLName value="TroopDesignerRewritten.dll" />
+			<SubModuleClassType value="TroopDesignerRewritten.SubModule" />
+			<Tags>
+				<Tag key="DedicatedServerType" value="none" />
+			</Tags>
+		</SubModule>
+	</SubModules>
+	<Xmls>
+		<XmlNode>
+			<XmlName id="NPCCharacters" path="troop_designer_characters"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+		<XmlNode>                
+			<XmlName id="SkillSets" path="troop_designer_skill_sets"/>
+			<IncludedGameTypes>
+				<GameType value = "Campaign"/>
+				<GameType value = "CampaignStoryMode"/>
+				<GameType value = "CustomGame"/>
+			</IncludedGameTypes>
+		</XmlNode>
+	</Xmls>
+</Module>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SkillSets>
+	<SkillSet id="t2_cavalry">
+		<skill id="Athletics" value="40" />
+		<skill id="Riding" value="40" />
+		<skill id="OneHanded" value="40" />
+		<skill id="TwoHanded" value="20" />
+		<skill id="Polearm" value="40" />
+		<skill id="Bow" value="15" />
+		<skill id="Crossbow" value="15" />
+		<skill id="Throwing" value="20" />
+	</SkillSet>
+	<SkillSet id="t2_ranged">
+		<skill id="Athletics" value="40" />
+		<skill id="Riding" value="15" />
+		<skill id="OneHanded" value="40" />
+		<skill id="TwoHanded" value="15" />
+		<skill id="Polearm" value="20" />
+		<skill id="Bow" value="40" />
+		<skill id="Crossbow" value="40" />
+		<skill id="Throwing" value="20" />
+	</SkillSet>
+</SkillSets>

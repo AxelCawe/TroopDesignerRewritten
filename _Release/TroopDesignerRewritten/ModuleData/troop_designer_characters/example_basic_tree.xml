@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+	<!--
+		This xml document is an example of troop tree with informations about the used attributes.
+		Be sure to test your characters often, as an error in the xml will result in your mod not being able to start, 
+		and it will be harder to debug a huge amount of modifications than just a unit or two.
+		
+		If you want to create your own characters within this mod, create an additional file structured like this one in the 'troop_designer_characters' folder (not recommanded as you will have a dependency to this mod).
+		If you want to add characters in your own mod, take a look at the SubModule.xml (recommended).
+		
+		For more examples, check 'Mount & Blade II Bannerlord\Modules\SandBoxCore\ModuleData\spnpccharacters.xml'
+	-->
+	
+	<!--	
+		Here is a description of the NPCCharacter attributes:
+	
+		id:
+		- the id of this particular unit
+		- need to be unique
+		
+		default_group: 
+		- the formation this unit belongs to by default
+		- the availale groups and correspondig formation keys are:
+			Infantry (1)
+			Ranged (2)
+			Cavalry (3)
+			HorseArcher (4)
+			Skirmisher (5)
+			HeavyInfantry (6)
+			LightCavalry (7)
+			HeavyCavalry (8)
+		
+		level:
+		- the level of this unit
+		- this will determine the unit tier as following:
+			Level 0: Tier 0
+			Level 6: Tier 1
+			Level 11: Tier 2
+			Level 16: Tier 3
+			Level 21: Tier 4
+			Level 26: Tier 5
+			Level 31: Tier 6
+		
+		name:
+		- the name of the unit
+		- you can put a localization key in place of the '{=}'
+		- if no localization key has been entered, the default name will be used (the one after '{=}')
+		- note that '{=}' is optional if you don't use a key
+		
+		occupation:
+		- the occupation of this character (Bandit, Soldier, ...)
+		- for regular troops, will be 'Soldier'
+		
+		is_basic_troop:
+		- true mean this unit is the base of a troop tree (used for encyclopedia)
+		- not having this attribute is equivalent to setting it to false (see next characters)
+		
+		is_female:
+		- true mean this unit will be female
+		- not having this attribute is equivalent to setting it to false
+		
+		culture:
+		- the culture of this character (do not forget the 'Culture.' before the culture id)		
+	-->
+	<NPCCharacter
+		id="td_basic_t1_recruit"
+		default_group="Infantry"
+		level="6"
+		name="{=}Recruit"
+		is_basic_troop="true"
+		occupation="Soldier"
+		culture="Culture.empire" >
+		<!--
+			The body properties this unit will use
+			You can see how body properties are declared in 'Mount & Blade II Bannerlord\Modules\SandBoxCore\ModuleData\sandboxcore_bodyproperties.xml'
+		-->
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<!--
+			The skill values this unit will have
+		-->
+		<skills>
+			<skill id="Athletics" value="20" />
+			<skill id="Riding" value="0" />
+			<skill id="OneHanded" value="20" />
+			<skill id="TwoHanded" value="10" />
+			<skill id="Polearm" value="20" />
+			<skill id="Bow" value="5" />
+			<skill id="Crossbow" value="5" />
+			<skill id="Throwing" value="10" />
+		</skills>
+		<!--
+			The character ids this unit can be upgraded into
+			Having more than two upgrade_target will mess up the troop tree in the encyclopedia and crash the party screen (to avoid)	
+			Let empty if you don't want this unit to have upgrades
+		-->
+		<upgrade_targets>
+			<upgrade_target id="NPCCharacter.td_basic_t2_horseman" />
+			<upgrade_target id="NPCCharacter.td_basic_t2_bowman" />
+		</upgrade_targets>
+		<!--
+			The equipments this unit will use
+			To have an item slot optional, have an equipment roster without it (like the 'Cape' slot in the example below, only present in the second equipment roster)
+			
+			Randomization:
+			- the randomization will be done on each equipment roster element, this is not an equipment roster pick
+			- this means that in the following example, a unit could have a 'seax' (roster 1) with a 'tied_cloth_tunic' (roster 2)
+			- this make it difficult to have a unit having different ranged weapon options (cause the weapons and quivers will be randomly distributed, which mean a unit can end up with a bow + bolts or crossbow + arrows) (see: 'example_bad_practice.xml')
+			- try having specialized unit to prevent such issues
+			
+			The available slots are:
+			- Item0
+			- Item1
+			- Item2
+			- Item3
+			- Item4
+			- Head
+			- Cape
+			- Body
+			- Gloves
+			- Leg
+			- Horse
+			- HorseHarness
+			
+			If you want your unit to hold a banner, use the id "campaign_banner_small" with the "Item4"  slot
+		-->
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.seax" />
+				<equipment slot="Body" id="Item.cloth_tunic" />
+				<equipment slot="Leg" id="Item.strapped_leather_boots" />
+			</EquipmentRoster>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.peasant_hatchet_1_t1" />
+				<equipment slot="Cape" id="Item.hood" />
+				<equipment slot="Body" id="Item.tied_cloth_tunic" />
+				<equipment slot="Leg" id="Item.strapped_leather_boots" />
+			</EquipmentRoster>
+			<!--
+				Inside the equipments, you can also declare a civilian set to be used in civilian missions like below
+				You can see how equipment sets are declared in 'Mount & Blade II Bannerlord\Modules\SandBoxCore\ModuleData\sandboxcore_equipment_sets.xml'
+				Note that this part is currently not generated by the Troop Designer tool
+			-->
+			<EquipmentSet id="vlandia_troop_civilian_template_t2" civilian="true" />
+		</Equipments>
+	</NPCCharacter>
+	
+	<NPCCharacter
+		id="td_basic_t2_horseman"
+		default_group="Cavalry"
+		level="11"
+		name="{=}Horseman"
+		upgrade_requires="ItemCategory.horse"
+		occupation="Soldier"
+		culture="Culture.empire" >
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<skills>
+			<skill id="Athletics" value="40" />
+			<skill id="Riding" value="40" />
+			<skill id="OneHanded" value="40" />
+			<skill id="TwoHanded" value="20" />
+			<skill id="Polearm" value="40" />
+			<skill id="Bow" value="15" />
+			<skill id="Crossbow" value="15" />
+			<skill id="Throwing" value="20" />
+		</skills>
+		<!--
+			Let upgrade_targets empty for last tier troops
+		-->
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.iron_spatha_sword_t2" />
+				<equipment slot="Body" id="Item.tunic_with_rolled_cloth" />
+				<equipment slot="Leg" id="Item.empire_horseman_boots" />
+			</EquipmentRoster>
+			<!--
+				In native xmls, horse equipments are most of the time set outside of the equipment rosters
+				It means they will always be present on the unit
+				Note that this practice could apply to any equipment, but is only used for horse equipments in native xmls
+				To have randomized horse equipments, see: 'example_different_horses.xml'
+			-->
+			<equipment slot="Horse" id="Item.empire_horse_tournament" />
+			<equipment slot="HorseHarness" id="Item.light_harness" />
+		</Equipments>
+	</NPCCharacter>
+	
+	<!--
+		For thie following unit, we are using a skill set (see skill_template attribute in the NPCCharacter declaration)
+		You can see how skill sets are declared in 'Mount & Blade II Bannerlord\Modules\SandBoxCore\ModuleData\sandboxcore_skill_sets.xml'
+	-->
+	<NPCCharacter
+		id="td_basic_t2_bowman"
+		default_group="Ranged"
+		level="11"
+		name="{=}Bowman"
+		occupation="Soldier"
+		culture="Culture.empire"
+		skill_template="SkillSet.t2_ranged" >
+		<face>
+			<face_key_template value="BodyProperty.fighter_empire" />
+		</face>
+		<upgrade_targets>
+		</upgrade_targets>
+		<Equipments>
+			<EquipmentRoster>
+				<equipment slot="Item0" id="Item.hunting_bow" />
+				<equipment slot="Item1" id="Item.default_arrows" />
+				<equipment slot="Item2" id="Item.seax" />
+				<equipment slot="Head" id="Item.padded_cap" />
+				<equipment slot="Body" id="Item.footmans_tunic" />
+				<equipment slot="Gloves" id="Item.buttoned_leather_bracers" />
+				<equipment slot="Leg" id="Item.strapped_leather_boots" />
+			</EquipmentRoster>
+		</Equipments>
+	</NPCCharacter>
+</NPCCharacters>
